@@ -20,6 +20,7 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
     return Column(
       children: [
         CreditCardWidget(
+          enableFloatingCard: true,
           cardBgColor: Colors.green,
           chipColor: Colors.amber,
           cardNumber: cardNumber,
