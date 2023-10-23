@@ -40,11 +40,14 @@ class MyCartViewBody extends StatelessWidget {
             value: '\$50.97',
           ),
           const SizedBox(height: 16),
-          CustomButton(onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const PaymentDetailsView();
-            }));
-          }),
+          CustomButton(
+              text: 'Complete Payment',
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return const PaymentDetailsView();
+                }));
+              }),
           const SizedBox(height: 12),
         ],
       ),
