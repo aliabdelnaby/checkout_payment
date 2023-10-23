@@ -20,6 +20,8 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
     return Column(
       children: [
         CreditCardWidget(
+          cardBgColor: Colors.green,
+          chipColor: Colors.amber,
           cardNumber: cardNumber,
           expiryDate: expiryDate,
           cardHolderName: cardHolderName,
