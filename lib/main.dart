@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'checkout/presentation/views/my_cart_view.dart';
+import 'features/checkout/presentation/views/my_cart_view.dart';
 
 void main() {
   runApp(const MyApp());
