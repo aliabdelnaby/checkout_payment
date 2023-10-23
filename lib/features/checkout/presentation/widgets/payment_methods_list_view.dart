@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_paymob/features/checkout/presentation/widgets/payment_details_item.dart';
 
-class PaymentMethodsListView extends StatelessWidget {
+class PaymentMethodsListView extends StatefulWidget {
   const PaymentMethodsListView({super.key});
+
+  @override
+  State<PaymentMethodsListView> createState() => _PaymentMethodsListViewState();
+}
+
+class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
   final List<String> paymentMethodsItem = const [
     "assets/images/card.svg",
     "assets/images/paypal.svg",
   ];
+
+  int activeIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,9 +25,17 @@ class PaymentMethodsListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: PaymentMethodItem(
-                isActive: false, image: paymentMethodsItem[index]),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: GestureDetector(
+              onTap: () {
+                activeIndex = index;
+                setState(() {});
+              },
+              child: PaymentMethodItem(
+                isActive: activeIndex == index,
+                image: paymentMethodsItem[index],
+              ),
+            ),
           );
         },
       ),
