@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_paymob/core/widgets/custom_btn.dart';
+import 'package:flutter_paymob/features/checkout/presentation/views/thank_you_view.dart';
 import 'package:flutter_paymob/features/checkout/presentation/widgets/custom_credit_card.dart';
 import 'package:flutter_paymob/features/checkout/presentation/widgets/payment_methods_list_view.dart';
 
@@ -39,6 +40,10 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
                     formKey.currentState!.save();
                     log("pay");
                   } else {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const ThankYouView();
+                    }));
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});
                   }
