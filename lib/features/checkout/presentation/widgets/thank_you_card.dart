@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paymob/core/utils/styles.dart';
-import 'package:flutter_paymob/features/checkout/presentation/widgets/credit_card_info_widget.dart';
-import 'package:flutter_paymob/features/checkout/presentation/widgets/payment_item_info.dart';
-import 'package:flutter_paymob/features/checkout/presentation/widgets/total_price.dart';
+import '../../../../core/utils/styles.dart';
+import 'credit_card_info_widget.dart';
+import 'payment_item_info.dart';
+import 'total_price.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ThankYouCard extends StatelessWidget {

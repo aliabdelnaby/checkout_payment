@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paymob/core/widgets/custom_appbar.dart';
+import '../../../../core/widgets/custom_appbar.dart';
 import '../widgets/my_cart_view_body.dart';
 
 class MyCartView extends StatelessWidget {

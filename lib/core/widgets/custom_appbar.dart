@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paymob/core/utils/styles.dart';
+
+import '../utils/styles.dart';
 
 AppBar buildAppBar({required final String title}) {
   return AppBar(

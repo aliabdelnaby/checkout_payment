@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paymob/core/utils/styles.dart';
+import '../../../../core/utils/styles.dart';
 
 class TotalPrice extends StatelessWidget {
   const TotalPrice({super.key, required this.titleLarge, required this.value});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paymob/core/utils/styles.dart';
+
+import '../../../../core/utils/styles.dart';
 
 class PaymentItemInfo extends StatelessWidget {
   const PaymentItemInfo({
