@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_paymob/core/utils/styles.dart';
+import 'package:flutter_paymob/features/checkout/presentation/widgets/credit_card_info_widget.dart';
 import 'package:flutter_paymob/features/checkout/presentation/widgets/payment_item_info.dart';
+import 'package:flutter_paymob/features/checkout/presentation/widgets/total_price.dart';
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({
@@ -46,6 +48,16 @@ class ThankYouCard extends StatelessWidget {
               title: "To",
               value: 'Sam Louis',
             ),
+            const Divider(
+              thickness: 2,
+              height: 60,
+            ),
+            const TotalPrice(
+              titleLarge: "Total",
+              value: '\$50.97',
+            ),
+            const SizedBox(height: 30),
+            const CreditCardInfoWidget(),
           ],
         ),
       ),
