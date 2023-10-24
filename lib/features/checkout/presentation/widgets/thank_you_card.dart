@@ -3,6 +3,7 @@ import 'package:flutter_paymob/core/utils/styles.dart';
 import 'package:flutter_paymob/features/checkout/presentation/widgets/credit_card_info_widget.dart';
 import 'package:flutter_paymob/features/checkout/presentation/widgets/payment_item_info.dart';
 import 'package:flutter_paymob/features/checkout/presentation/widgets/total_price.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({
@@ -58,6 +59,36 @@ class ThankYouCard extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             const CreditCardInfoWidget(),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SvgPicture.asset("assets/images/barcode.svg"),
+                Container(
+                  width: 113,
+                  height: 58,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          width: 1.50, color: Color(0xFF34A853)),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'PAID',
+                      textAlign: TextAlign.center,
+                      style: Styles.style24.copyWith(
+                        color: const Color(0xFF34A853),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: ((MediaQuery.sizeOf(context).height * .2 + 20) / 2) - 29,
+            )
           ],
         ),
       ),
