@@ -61,4 +61,3 @@ class MyCartViewBody extends StatelessWidget {
     );
   }
 }
-
