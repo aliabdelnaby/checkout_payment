@@ -24,16 +24,18 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        child:isLoading ? const CircularProgressIndicator() : Center(
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: Styles.style18w600.copyWith(
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : Center(
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: Styles.style18w600.copyWith(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
       ),
     );
   }
