@@ -1,10 +1,8 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter_paymob/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:flutter_paymob/features/checkout/data/repos/checkout_repo.dart';
 import 'package:meta/meta.dart';
-
 part 'payment_state.dart';
 
 class PaymentCubit extends Cubit<PaymentState> {
