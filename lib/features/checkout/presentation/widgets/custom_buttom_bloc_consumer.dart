@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_paymob/core/utils/api_keys.dart';
 import 'package:flutter_paymob/core/widgets/custom_btn.dart';
 import 'package:flutter_paymob/features/checkout/data/models/amount_model/amount_model.dart';
 import 'package:flutter_paymob/features/checkout/data/models/amount_model/details.dart';
@@ -69,40 +70,43 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             var itemList = ItemListModel(
               orders: orders,
             );
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => PaypalCheckoutView(
-                sandboxMode: true,
-                clientId:
-                    "ATFDCxm2XR5zWGRNmrlSTnSJrgqxkVNUKqxKFs86Ed93iFv6Wqw8ENJjZEJqf2NoRoG0waJMUHA5mv6K",
-                secretKey:
-                    "EM2MrnrD97oqIiLtIBDlV7XuxuD3yBKKC4t7poWtLBpju7-ojTGs4lWxNn56_0ZH1mGtwCsQgb56t7py",
-                transactions: [
-                  {
-                    "amount": amount.toJson(),
-                    "description": "The payment transaction description.",
-                    "item_list": itemList.toJson(),
-                  }
-                ],
-                note: "Contact us for any questions on your order.",
-                onSuccess: (Map params) async {
-                  log("onSuccess: $params");
-                  Navigator.pop(context);
-                },
-                onError: (error) {
-                  log("onError: $error");
-                  Navigator.pop(context);
-                },
-                onCancel: () {
-                  print('cancelled:');
-                  Navigator.pop(context);
-                },
-              ),
-            ));
+            exceutePaypalPayment(context, amount, itemList);
           },
           isLoading: state is PaymentLoading ? true : false,
           text: "Continue",
         );
       },
     );
+  }
+
+  void exceutePaypalPayment(
+      BuildContext context, AmountModel amount, ItemListModel itemList) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => PaypalCheckoutView(
+        sandboxMode: true,
+        clientId: ApiKeys.clientIdPaypal,
+        secretKey: ApiKeys.secretKeyPaypal,
+        transactions: [
+          {
+            "amount": amount.toJson(),
+            "description": "The payment transaction description.",
+            "item_list": itemList.toJson(),
+          }
+        ],
+        note: "Contact us for any questions on your order.",
+        onSuccess: (Map params) async {
+          log("onSuccess: $params");
+          Navigator.pop(context);
+        },
+        onError: (error) {
+          log("onError: $error");
+          Navigator.pop(context);
+        },
+        onCancel: () {
+          print('cancelled:');
+          Navigator.pop(context);
+        },
+      ),
+    ));
   }
 }
