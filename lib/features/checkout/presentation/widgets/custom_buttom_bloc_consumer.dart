@@ -1,10 +1,7 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_paymob/core/utils/api_keys.dart';
 import 'package:flutter_paymob/core/widgets/custom_btn.dart';
-import 'package:flutter_paymob/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:flutter_paymob/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:flutter_paymob/features/checkout/presentation/views/thank_you_view.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
