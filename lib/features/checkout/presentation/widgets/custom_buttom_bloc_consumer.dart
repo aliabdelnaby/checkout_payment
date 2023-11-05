@@ -2,6 +2,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paymob/core/widgets/custom_btn.dart';
+import 'package:flutter_paymob/features/checkout/data/models/amount_model/amount_model.dart';
+import 'package:flutter_paymob/features/checkout/data/models/amount_model/details.dart';
+import 'package:flutter_paymob/features/checkout/data/models/item_list_model/item.dart';
+import 'package:flutter_paymob/features/checkout/data/models/item_list_model/item_list_model.dart';
 import 'package:flutter_paymob/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:flutter_paymob/features/checkout/presentation/views/thank_you_view.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
@@ -38,39 +42,45 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             // );
             // BlocProvider.of<PaymentCubit>(context)
             //     .makePayment(paymentIntentInputModel: paymentIntentInputModel);
+            var amount = AmountModel(
+              total: "100",
+              currency: 'USD',
+              details: Details(
+                shipping: "0",
+                shippingDiscount: 0,
+                subtotal: '100',
+              ),
+            );
+
+            List<OrderItemModel> orders = [
+              OrderItemModel(
+                currency: 'USD',
+                name: 'Apple',
+                price: "4",
+                quantity: 10,
+              ),
+              OrderItemModel(
+                currency: 'USD',
+                name: 'Pineapple',
+                price: "5",
+                quantity: 12,
+              ),
+            ];
+            var itemList = ItemListModel(
+              orders: orders,
+            );
             Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) => PaypalCheckoutView(
                 sandboxMode: true,
-                clientId: "YOUR CLIENT ID",
-                secretKey: "YOUR SECRET KEY",
-                transactions: const [
+                clientId:
+                    "ATFDCxm2XR5zWGRNmrlSTnSJrgqxkVNUKqxKFs86Ed93iFv6Wqw8ENJjZEJqf2NoRoG0waJMUHA5mv6K",
+                secretKey:
+                    "EM2MrnrD97oqIiLtIBDlV7XuxuD3yBKKC4t7poWtLBpju7-ojTGs4lWxNn56_0ZH1mGtwCsQgb56t7py",
+                transactions: [
                   {
-                    "amount": {
-                      "total": '100',
-                      "currency": "USD",
-                      "details": {
-                        "subtotal": '100',
-                        "shipping": '0',
-                        "shipping_discount": 0
-                      }
-                    },
+                    "amount": amount.toJson(),
                     "description": "The payment transaction description.",
-                    "item_list": {
-                      "items": [
-                        {
-                          "name": "Apple",
-                          "quantity": 4,
-                          "price": '10',
-                          "currency": "USD"
-                        },
-                        {
-                          "name": "Pineapple",
-                          "quantity": 5,
-                          "price": '12',
-                          "currency": "USD"
-                        }
-                      ],
-                    }
+                    "item_list": itemList.toJson(),
                   }
                 ],
                 note: "Contact us for any questions on your order.",
